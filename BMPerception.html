@@ -1,0 +1,208 @@
+<head>
+  <title>Biological Motion Perception Survey</title>
+</head>
+
+<body>
+  <h1>Biological Motion Perception Survey</h1>
+
+	<br>
+
+	{{#if get_data}}
+		<h2>CSV DATA</h2>
+		<pre>{{survey_data}}</pre>
+	{{else}}
+		{{#if part0}}
+			<p>
+				Welcome! You will be given a series of 96 tasks (part 1), another
+				series of 96 tasks (part 2), and then a quick survey (part 3). The
+					whole process should take only about 30 minutes. Note that you
+					<b>should not refresh</b> the page or press back, or else <b>all
+						progress will be lost</b>.
+			</p>
+
+			<h2>Instructions for part 1</h2>
+
+			<p>
+				For each task, you will first see a <b>black figure</b> walking
+				left or right for a few seconds. As quickly as possible, press
+				either the ← or → arrow key to choose which way you think it's
+				going. Do this while the black figure is still on screen. In case
+				you mess up, the last direction you press will be the answer we
+				record. Right after the black figure, you will briefly see a
+				<b>white figure</b> either walking or running. After this, please
+				choose whether you think it was walking or running by pressing the
+				corresponding option. You will do 96 tasks like this.
+			</p>
+			<p>
+				Lastly, throughout each task, there will be a <b>red dot</b> in the
+				center of the screen. <b>Please keep your eyes focused on that red dot
+				at all times</b> while doing the tasks.
+			</p>
+			<p></p>
+			<p>
+				When you've understood the instructions and are ready to begin,
+				please fill in your age and gendre, read and agree to the consent
+				form, and then click the "Ready" button. After 1 example task,
+				you'll go straight to doing the 96 tasks of part 1.
+			</p>
+
+			<p>
+			<br>
+			** CONSENT FORM PLACE HOLDER ** <br>
+			<br>
+			</p>
+
+			<form class="go-to-part1">
+				<div>Age: <input type="number" name="age"></div>
+				<div>Male?: <input type="checkbox" name="gendre"></div>
+				<div>Do you consent to take the survey? <input type="checkbox" name="consent"></div>
+				<div><input type="submit" value="Ready"></div>
+			</form>
+
+
+			<!-- Get Data -->
+			<div id="footer">
+				<form class="get-data">
+					Data Code
+					<input type="text" name="text">
+				</form>
+			</div>
+		{{/if}}
+		{{#if part1}}
+			<h3>{{task_name}}</h3>
+
+			<p class="reminder">
+				Press ← or → for the black figure, choose walker or runner
+				for the white figure. <br>
+				<b>Keep your eyes on the red dot at all times.</b>
+			</p>
+
+			{{#if black_waiting}}
+				<div class="left-centered">
+					<img src="{{task_black_file_left}}" onerror="this.style.display='none'">
+				</div>
+				<div class="centered">
+					<div id="dot"> </div>
+				</div>
+				<div class="right-centered">
+					<img src="{{task_black_file_right}}" onerror="this.style.display='none'">
+				</div>
+			{{/if}}
+			{{#if white_waiting}}
+				<div class="left-centered">
+					<img src="{{task_white_file_left}}" onerror="this.style.display='none'">
+				</div>
+				<div class="centered">
+					<div id="dot"> </div>
+				</div>
+				<div class="right-centered">
+					<img src="{{task_white_file_right}}" onerror="this.style.display='none'">
+				</div>
+			{{/if}}
+			{{#if white_question}}
+				<div class="centered">
+					<h4>Was the white figure walking or running?</h4>
+					<button class="walking1">Walking</button> &nbsp; <button class="running1">Running</button>
+				</div>
+			{{/if}}
+		{{/if}}
+		{{#if part1_5}}
+			<h2>Instructions for part 2</h2>
+
+			<p>
+				Part 2 is like Part 1, except now, you don't do anything for the
+				black figure. <b>Ignore</b> the black figure, and <b>only</b> focus
+				on the white figure. Again, make sure to <b>always</b> keep your eyes
+				focused on the red dot in the center <b>at all times</b>.
+			</p>
+			<p></p>
+			<p>
+				When you've understood the instructions and are ready to begin,
+				please click the "Ready" button. After 1 example task, you'll go
+				straight to doing the 96 tasks of part 2, and then you'll be done!
+			</p>
+
+			<button class="go-to-part2">Ready</button>
+		{{/if}}
+		{{#if part2}}
+			<h3>{{task_name}}</h3>
+
+			<p class="reminder">
+				<b>Ignore</b> the black figure, and focus on whether the white figure
+				is a walker or runner.<br>
+				<b>Keep your eyes on the red dot at all times.</b>
+			</p>
+
+			{{#if black_waiting}}
+				<div class="left-centered">
+					<img src="{{task_black_file_left}}" onerror="this.style.display='none'">
+				</div>
+				<div class="centered">
+					<div id="dot"> </div>
+				</div>
+				<div class="right-centered">
+					<img src="{{task_black_file_right}}" onerror="this.style.display='none'">
+				</div>
+			{{/if}}
+			{{#if white_waiting}}
+				<div class="left-centered">
+					<img src="{{task_white_file_left}}" onerror="this.style.display='none'">
+				</div>
+				<div class="centered">
+					<div id="dot"> </div>
+				</div>
+				<div class="right-centered">
+					<img src="{{task_white_file_right}}" onerror="this.style.display='none'">
+				</div>
+			{{/if}}
+			{{#if white_question}}
+				<div class="centered">
+					<h4>Was the white figure walking or running?</h4>
+					<button class="walking2">Walking</button> &nbsp; <button class="running2">Running</button>
+				</div>
+			{{/if}}
+		{{/if}}
+		{{#if part2_5}}
+			<h2>Instructions for part 3</h2>
+
+			<p>
+				You will now be given a series of 50 survey questions on your
+				feelings on different matters. For each question, choose from 1
+				(Definitely Agree) to 4 (Definitely Disagree) for whichever sentiment
+				most represents your opinion.
+			</p>
+			<p>
+			</p>
+			<p></p>
+			<p>
+				When you've understood the instructions and are ready to begin,
+				please click the "Ready" button. 
+			</p>
+
+			<button class="go-to-part3">Ready</button>
+		{{/if}}
+		{{#if part3}}
+			<h3>{{question_name}}</h3>
+
+			<p class="reminder">
+				Choose the answer which most matches your opinion.
+			</p>
+
+			<div class="center">
+				<h4>{{question}}</h4>
+
+				<button class="choice1">1: Definitely Agree</button> &nbsp;
+				<button class="choice2">2: Slightly Agree</button> &nbsp;
+				<button class="choice3">3: Slightly Disagree</button> &nbsp;
+				<button class="choice4">4: Definitely Disagree</button> &nbsp;
+			</div>
+		{{/if}}
+		{{#if part3_5}}
+			<div class="center">
+				<h3>Thank you so much for helping with the survey!</h3>
+			</div>
+		{{/if}}
+	{{/if}}
+
+</body>
+
